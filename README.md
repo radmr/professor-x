@@ -13,8 +13,10 @@ One hand control
 
 ## Core concept
 
-Top down-ish shooter controlled by WASD and space for movement and shooting
+Top down-ish shooter controlled by WASD and space for movement and shooting.
+
 Player fight hordes of mobs and evolve by consuming radiation substance.
+
 Bad radiation introduces boost + scrambles existing controls
 
 ### Boosts
