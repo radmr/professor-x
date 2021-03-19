@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/character/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/Level.cs" type="Script" id=2]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 49, 55 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 49, 55 )
+current = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
