@@ -29,7 +29,7 @@ public class Bullet : Node2D
     {
         _parent = parent;
         GlobalPosition = parent.GlobalPosition + offset.Rotated(parent.Rotation + rotateModifier);
-        _projectile = projectile;
+        _projectile = projectile.Rotated(rotateModifier);
         LookAt(GlobalPosition + _projectile);
     }
 

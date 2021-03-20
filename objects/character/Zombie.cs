@@ -6,11 +6,17 @@ public class Zombie : KinematicBody2D
     // Declare member variables here. Examples:
     private float _speed = 40f;
 
+    public int Damage { get; set; }
+
     private Node2D _target;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        var singleton = GetNode<Singleton>("/root/Singleton");
+
+        _speed = Mathf.CeilToInt((float)singleton.LevelNumber / 2) * 30f;
+        Damage = Mathf.CeilToInt((float)singleton.LevelNumber / 3) * 5;
 
     }
 

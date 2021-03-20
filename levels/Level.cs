@@ -7,46 +7,42 @@ public class Level : Node2D
     // private int a = 2;
     // private string b = "text";
 
+
+    private int _level;
     private PackedScene _mobScene;
     private Player _player;
 
+
+    [Signal] public delegate void UpdateMob(int count);
     public int MobCount { get; set; }
     public override void _Ready()
     {
-        MobCount = 20;
+        var singleton = GetNode<Singleton>("/root/Singleton");
+        singleton.SetHUDVisibility(true);
+        singleton.UpdateLevel();
+        singleton.SpeedrunActive = true;
+        MobCount = singleton.LevelNumber * 5;
+        _level = singleton.LevelNumber;
         _mobScene = (PackedScene)ResourceLoader.Load("res://objects/character/Zombie.tscn");
         _player = GetNode<Player>("Player");
+
+        Connect("UpdateMob", singleton, "UpdateMobCount");
     }
 
-    public void Spawn()
+    public void SpawnMob()
     {
+        var spawners = GetNode<Node>("Spawners").GetChildren();
         var random = new Random();
 
-        int spawnX = random.Next((int)GetViewportRect().Size.x);
-        int spawnY = random.Next((int)GetViewportRect().Size.y);
-
-        int edge = random.Next(4);
-
-        switch (edge)
+        if (spawners.Count > 0)
         {
-            case 0:
-                spawnX = -(int)GetViewportRect().Size.x;
-                break;
-            case 1:
-                spawnX = (int)GetViewportRect().Size.x;
-                break;
-            case 2:
-                spawnY = -(int)GetViewportRect().Size.y;
-                break;
-            case 3:
-                spawnY = (int)GetViewportRect().Size.y;
-                break;
-        }
+            if ((Spawner)spawners[random.Next(spawners.Count)] is Spawner spawner)
+            {
+                spawner.init(_player, GetNode<Node>("Mobs"));
+                spawner.Spawn();
+            }
 
-        var zombie = (Zombie)_mobScene.Instance();
-        zombie.init(_player);
-        AddChild(zombie);
-        zombie.GlobalPosition = _player.GlobalPosition + new Vector2(spawnX, spawnY);
+        }
 
     }
 
@@ -54,8 +50,8 @@ public class Level : Node2D
     {
         if (MobCount > 0)
         {
-            Spawn();
-            // MobCount--;
+            SpawnMob();
+            MobCount--;
         }
         else
         {
@@ -64,8 +60,35 @@ public class Level : Node2D
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+    public override void _Process(float delta)
+    {
+        var zomebieCount = 0;
+        float minDistance = 0;
+        foreach (Node children in GetNode("Mobs").GetChildren())
+        {
+            if (children is Zombie zombie)
+            {
+                zomebieCount++;
+                if (minDistance == 0f || (zombie.GlobalPosition - _player.GlobalPosition).Length() < minDistance)
+                {
+                    minDistance = (zombie.GlobalPosition - _player.GlobalPosition).Length();
+                    _player.UpdateIndicator(zombie);
+                }
+            }
+        }
+        EmitSignal("UpdateMob", zomebieCount + MobCount);
+        if (zomebieCount == 0 && MobCount == 0)
+        {
+            if (_level > 12)
+            {
+                GetTree().ChangeScene("res://ui/Credits.tscn");
+
+            }
+            else
+            {
+
+                GetTree().ChangeScene("res://ui/Evolve.tscn");
+            }
+        }
+    }
 }

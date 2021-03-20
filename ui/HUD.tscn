@@ -1,21 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/sprite/heart.png" type="Texture" id=2]
+[ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 12
+size = 8
 font_data = ExtResource( 1 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float health_percentage;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (UV.y < (1.0 - health_percentage)) {
+		COLOR.a *= 0.2;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/health_percentage = 1.0
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Inputs" type="VBoxContainer" parent="Control"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 40.0
@@ -24,57 +43,103 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
-margin_right = 97.0
-margin_bottom = 15.0
+[node name="up" type="Label" parent="Control/Inputs"]
+margin_right = 46.0
+margin_bottom = 10.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Up: W"
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer"]
-margin_top = 19.0
-margin_right = 97.0
-margin_bottom = 34.0
+[node name="down" type="Label" parent="Control/Inputs"]
+margin_top = 14.0
+margin_right = 46.0
+margin_bottom = 24.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Down: S"
 
-[node name="Label3" type="Label" parent="Control/VBoxContainer"]
-margin_top = 38.0
-margin_right = 97.0
-margin_bottom = 53.0
+[node name="left" type="Label" parent="Control/Inputs"]
+margin_top = 28.0
+margin_right = 46.0
+margin_bottom = 38.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Left: A"
 
-[node name="Label4" type="Label" parent="Control/VBoxContainer"]
-margin_top = 57.0
-margin_right = 97.0
-margin_bottom = 72.0
+[node name="right" type="Label" parent="Control/Inputs"]
+margin_top = 42.0
+margin_right = 46.0
+margin_bottom = 52.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "RIGHT: d"
 
-[node name="Label5" type="Label" parent="Control/VBoxContainer"]
-margin_top = 76.0
-margin_right = 97.0
-margin_bottom = 91.0
+[node name="fire" type="Label" parent="Control/Inputs"]
+margin_top = 56.0
+margin_right = 46.0
+margin_bottom = 66.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Shoot: Space"
+text = "Fire: Space"
 
-[node name="Label6" type="Label" parent="Control/VBoxContainer"]
-margin_top = 95.0
-margin_right = 97.0
-margin_bottom = 110.0
+[node name="rotate_left" type="Label" parent="Control/Inputs"]
+visible = false
+margin_top = 70.0
+margin_right = 60.0
+margin_bottom = 80.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Rotate Left: Q"
 
-[node name="Label7" type="Label" parent="Control/VBoxContainer"]
-margin_top = 114.0
-margin_right = 97.0
-margin_bottom = 129.0
+[node name="rotate_right" type="Label" parent="Control/Inputs"]
+visible = false
+margin_top = 84.0
+margin_right = 60.0
+margin_bottom = 94.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Rotate Right: E"
+
+[node name="Health" type="TextureRect" parent="Control"]
+material = SubResource( 3 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -44.0
+margin_right = 50.0
+margin_bottom = -10.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="VBoxContainer" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -77.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = 40.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mob" type="Label" parent="Control/Counter"]
+margin_right = 72.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+
+[node name="time" type="Label" parent="Control/Counter"]
+margin_top = 17.0
+margin_right = 72.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 3 )
+
+[node name="level" type="Label" parent="Control/Counter"]
+margin_top = 34.0
+margin_right = 72.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 3 )

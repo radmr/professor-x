@@ -16,3 +16,6 @@ mono_crash.*
 # Raw assets
 *.aseprite
 assets/raw
+
+# Export folder
+export/

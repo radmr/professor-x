@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>radiation</name>
+    </assembly>
+    <members>
+        <member name="T:Player">
+            <summary>
+            Class for player-controlled character.
+            </summary>
+        </member>
+        <member name="M:Player._handleMovement(System.Single)">
+            <summary>
+            Handles <see cref="T:Player"/> sprite movement.
+            </summary>
+            <param name="delta">Time elapsed</param>
+        </member>
+        <member name="M:Player._handleFiring(System.Single)">
+            <summary>
+            Handling firing bullets and cooldown controlling.
+            </summary>
+            <param name="delta">Time elapsed</param>
+        </member>
+    </members>
+</doc>
