@@ -4,6 +4,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>docs\radiation.XML</DocumentationFile>
+    <DocumentationFile>docs\professorX.XML</DocumentationFile>
   </PropertyGroup>
 </Project>

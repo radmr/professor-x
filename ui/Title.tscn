@@ -54,7 +54,7 @@ margin_bottom = 37.0
 custom_fonts/font = ExtResource( 1 )
 text = "Professor X
 
-There was a nuclear fallout, you manged to escape but then you realised your family are all stuck in a factory alongside numerous survivors. It is up to you to save them now."
+There was a nuclear fallout, you were lucky enough to be out of the initial blast zone, but your family are all stuck in a factory for shelter alongside other survivors. The path is flooded with mutants. It is up to you to save them now."
 align = 1
 valign = 1
 autowrap = true

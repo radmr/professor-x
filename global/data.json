@@ -38,7 +38,7 @@
 
     ],
     "prompts": {
-        "mainText": "\"Professor, our drones have revealed the mutants ahead are faster, stronger and tougher. What will you do?\"",
+        "mainText": "\"Professor, the mutants ahead are faster, stronger and tougher. What will you do?\"",
         "reject": "\"I can handle it\"",
         "accept": "Drink from a nearby pond",
         "rejectResult": "Worried about your family, you rush towards the factory without any rest."
