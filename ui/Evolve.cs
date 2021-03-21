@@ -93,7 +93,8 @@ public class Evolve : Control
     public void _on_ContinueButton_pressed()
     {
         GetNode<Singleton>("/root/Singleton").LevelNumber++;
-        GetTree().ChangeScene("res://levels/Level.tscn");
+        var level = GetNode<Singleton>("/root/Singleton").LevelNumber;
+        GetTree().ChangeScene($"res://levels/Level{level}.tscn");
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)

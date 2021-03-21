@@ -76,6 +76,7 @@ rotate_right={
 2d_physics/layer_1="player"
 2d_physics/layer_2="mob"
 2d_physics/layer_3="projectile"
+2d_physics/layer_4="terrain"
 
 [rendering]
 

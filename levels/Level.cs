@@ -62,13 +62,15 @@ public class Level : Node2D
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        var zomebieCount = 0;
         float minDistance = 0;
+        var zomebieCount = 0;
+
         foreach (Node children in GetNode("Mobs").GetChildren())
         {
             if (children is Zombie zombie)
             {
                 zomebieCount++;
+
                 if (minDistance == 0f || (zombie.GlobalPosition - _player.GlobalPosition).Length() < minDistance)
                 {
                     minDistance = (zombie.GlobalPosition - _player.GlobalPosition).Length();
@@ -76,10 +78,35 @@ public class Level : Node2D
                 }
             }
         }
-        EmitSignal("UpdateMob", zomebieCount + MobCount);
+
         if (zomebieCount == 0 && MobCount == 0)
         {
-            if (_level > 12)
+            _player.UpdateIndicator(GetNode<Exit>("Exit"));
+        }
+        EmitSignal("UpdateMob", zomebieCount + MobCount);
+
+        if (Input.IsActionPressed("ui_cancel"))
+        {
+
+            GetNode<Control>("Pause/PauseMenu").Show();
+            GetTree().Paused = true;
+        }
+
+    }
+
+    public void CompleteLevel()
+    {
+        var zomebieCount = 0;
+        foreach (Node children in GetNode("Mobs").GetChildren())
+        {
+            if (children is Zombie zombie)
+            {
+                zomebieCount++;
+            }
+        }
+        if (zomebieCount == 0 && MobCount == 0)
+        {
+            if (_level > 11)
             {
                 GetTree().ChangeScene("res://ui/Credits.tscn");
 

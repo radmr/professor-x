@@ -200,8 +200,9 @@ public class Player : KinematicBody2D
         {
             var bodies = _hitbox.GetOverlappingBodies();
             int totalDamage = 0;
-            foreach (PhysicsBody2D body in bodies)
+            foreach (object body in bodies)
             {
+
                 if (body is Zombie zombie)
                 {
                     totalDamage += zombie.Damage;
