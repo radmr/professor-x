@@ -13,6 +13,15 @@ public class Pause : Control
 
     }
 
+    public void init(string message)
+    {
+        GetNode<Label>("VBox/Status").Text = message;
+    }
+
+    public void disableButton(string path)
+    {
+        GetNode<Button>("VBox/" + path).Disabled = true;
+    }
     public void _on_Resume_pressed()
     {
         GetTree().Paused = false;

@@ -88,7 +88,9 @@ public class Level : Node2D
         if (Input.IsActionPressed("ui_cancel"))
         {
 
-            GetNode<Control>("Pause/PauseMenu").Show();
+            var pause = GetNode<Pause>("Pause/PauseMenu");
+            pause.Show();
+            pause.init("Paused");
             GetTree().Paused = true;
         }
 

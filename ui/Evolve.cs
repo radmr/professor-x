@@ -66,6 +66,7 @@ public class Evolve : Control
         var resultText = _nextEvolution["name"].ToString() + "\n" + _nextEvolution["description"].ToString();
         var random = new Random();
 
+
         var mutateProbability = (float)_nextEvolution["mutateProbability"];
         if (mutateProbability > random.NextDouble())
         {

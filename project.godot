@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Professor X"
 run/main_scene="res://ui/Title.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/sprite/favicon.png"
 
 [autoload]
 
@@ -32,6 +32,7 @@ window/size/test_height=720
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+window/icon="res://assets/sprite/favicon.png"
 
 [input]
 

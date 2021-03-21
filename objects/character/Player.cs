@@ -186,6 +186,14 @@ public class Player : KinematicBody2D
         _health -= rawDamage;
         EmitSignal("UpdateHUDHealth", _health);
 
+        if (_health <= 0)
+        {
+            var pause = GetNode<Pause>("../Pause/PauseMenu");
+            pause.Show();
+            pause.init("Defeated");
+            pause.disableButton("Resume");
+            GetTree().Paused = true;
+        }
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
