@@ -89,7 +89,7 @@ public class Singleton : Node
     {
         _hud = GetNode<CanvasLayer>("HUD");
         _audio = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
-        PlayerEvolution = 3;
+        PlayerEvolution = 0;
         LevelNumber = 1;
         SpeedrunActive = false;
         _speedrunTime = 0f;
