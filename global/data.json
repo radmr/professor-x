@@ -46,12 +46,12 @@
     "ending": {
         "0": "\"Look I beat the game without any mutations!\" Your family walks away as everyone hates a tryhard. [You have my respect though]",
         "2": "You have saved all the survivors from the factory single-handedly! Three movies and two best-selling books later, you are now the most badass scientist on the planet and debate Flat earthers on Youtube full-time.",
-        "4": "As you kick down the factory door, you hear an audiable gasp from the survivors inside. Still, your family still rush into your embrace. You've mutated physically along the way, but it is all worth seeing you family again.",
+        "4": "As you kick down the factory door, you hear an audiable gasp from the survivors inside. Still, your family still rush into your embrace. You've become a bit different along the way, but it is all worth seeing you family again.",
         "6": "As you call out to your family, you realise they can hardly recognise you anymore. Yes you have saved everyone from the mutants, but at what cost?\nYou decide to retire in the woods and accept to be called Big Foot for the rest of your life."
     },
     "credits": {
         "jam": "Mini Jam #76 - Radiation",
-        "author": "radmr",
+        "author": "by radmr",
         "repo": "https://github.com/radmr/mini-jam-76-radiation"
     }
 }

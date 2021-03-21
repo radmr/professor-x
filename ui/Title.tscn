@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/readable_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/Title.cs" type="Script" id=3]
+[ext_resource path="res://assets/sprite/logo.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprite/title.png" type="Texture" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -10,6 +12,16 @@ anchor_bottom = 1.0
 margin_left = -0.749146
 margin_right = -0.749146
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.447059 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,9 +64,7 @@ margin_top = -92.0
 margin_right = 159.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 1 )
-text = "Professor X
-
-There was a nuclear fallout, you were lucky enough to be out of the initial blast zone, but your family are all stuck in a factory for shelter alongside other survivors. The path is flooded with mutants. It is up to you to save them now."
+text = "There was a nuclear fallout, you were lucky enough to be out of the initial blast zone, but your family are all stuck in a factory for shelter alongside other survivors. The path is flooded with mutants. It is up to you to save them now."
 align = 1
 valign = 1
 autowrap = true
@@ -65,6 +75,17 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Logo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -80.0
+margin_right = 80.0
+margin_bottom = 90.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Buttons/Mute" to="." method="_on_Mute_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

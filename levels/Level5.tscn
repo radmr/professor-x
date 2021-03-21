@@ -122,7 +122,7 @@ position = Vector2( 584, 200 )
 position = Vector2( 144, 400 )
 
 [node name="Spawner3" parent="Spawners" instance=ExtResource( 3 )]
-position = Vector2( -1096, -864 )
+position = Vector2( -128, -632 )
 
 [node name="Pause" type="CanvasLayer" parent="."]
 

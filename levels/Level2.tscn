@@ -92,13 +92,13 @@ current = true
 [node name="Spawners" type="Node" parent="."]
 
 [node name="Spawner" parent="Spawners" instance=ExtResource( 3 )]
-position = Vector2( 272, 216 )
+position = Vector2( -944, 200 )
 
 [node name="Spawner2" parent="Spawners" instance=ExtResource( 3 )]
-position = Vector2( -200, 120 )
+position = Vector2( 40, 168 )
 
 [node name="Spawner3" parent="Spawners" instance=ExtResource( 3 )]
-position = Vector2( -512, 256 )
+position = Vector2( -440, 168 )
 
 [node name="Pause" type="CanvasLayer" parent="."]
 
